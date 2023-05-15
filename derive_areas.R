@@ -1,9 +1,14 @@
-derive_areas <- function(councilval){
+derive_areas <- function(councilval = NULL){
+
+  checkmate::assert_choice(councilval,
+                          choices = c("Highland", "Argyll and Bute"),
+                          null.ok = TRUE)
+
   if (!is.null(councilval)) {
 
     # determine the parent areas
     if (councilval == "Highland") {
-     areas <- c("Badenoch and Strathspey",
+      parents <- c("Badenoch and Strathspey",
                    "Caithness",
                    "East Ross",
                    "Inverness" ,
@@ -12,14 +17,16 @@ derive_areas <- function(councilval){
                    "Nairn and Nairnshire",
                    "Skye, Lochalsh and West Ross",
                    "Sutherland")
+     return(parents)
     }
 
 
-    if (!councilval == "Highland") {
-      areas <- c("Bute and Cowal",
+    if (councilval == "Argyll and Bute") {
+      parents <- c("Bute and Cowal",
                    "Helensburgh and Lomond",
                    "Mid-Argyll, Kintyre and Islay",
                    "Oban, Lorn and the Isles")
+      return(parents)
     }
 
 
@@ -27,7 +34,7 @@ derive_areas <- function(councilval){
 
   if (is.null(councilval)) {
 
-   areas <- c("Badenoch and Strathspey",
+    parents <- c("Badenoch and Strathspey",
                  "Caithness",
                  "East Ross",
                  "Inverness" ,
@@ -40,6 +47,7 @@ derive_areas <- function(councilval){
                  "Helensburgh and Lomond",
                  "Mid-Argyll, Kintyre and Islay",
                  "Oban, Lorn and the Isles")
+    return(parents)
   }
 
 }
