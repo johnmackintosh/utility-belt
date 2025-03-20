@@ -42,8 +42,6 @@ age_bander <- function(df,
     )
 
 if (factored) {
-
-
   df <- df %>%
     dplyr::mutate(age_band = factor(age_band,
                              levels = c("00-04",
@@ -67,11 +65,9 @@ if (factored) {
                                         "90+"),
                              ordered = TRUE)
     )
-
-
 }
 
 
-
+df
 
 }
